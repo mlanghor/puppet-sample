@@ -58,3 +58,9 @@ aws ec2 run-instances \
     --user-data file://ec2-boot.sh \
     --iam-instance-profile Name=live
 ```
+
+# Notes
+## Debugging
+The initial puppet run can be monitored by `tail -f /var/log/cloud-init-output.log`
+
+Puppet loops every 5 seconds until the run is successful. This is to ensure that a host is not left in an unconfigured state unintentionally.  If a puppet configuration has an error, simply push updates to the S3 bucket and puppet will pick them up upon the next run.
