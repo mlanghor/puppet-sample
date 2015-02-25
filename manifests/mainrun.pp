@@ -6,7 +6,7 @@ File {
 include ntp
 include puppet
 
-case $::env {
+case $::ec2_env {
     'live': {
         # put things specific to the live environment here
     }
